@@ -29,7 +29,7 @@ So, I thought I would do a short post that looks at daily weather patterns in To
 The raw data used in this analysis is available on the [Environment Canada website](http://climate.weather.gc.ca/climate_data/daily_data_e.html?StationID=51459). The processed version of this data is available on my [github page](https://github.com/ionnoant/2018-06-31_Toronto-weather-post). The data spans from June 13, 2013 to June 27, 2018 and contains 1,819 records of temperature data for Toronto Pearson International Airport.  
 
 ### R libraries
-The following libraries were loaded into my R workspace for this analysis. I also define a customer ggplot2 theme for both the data visualizations below. 
+The following libraries were loaded into my R workspace for this analysis. I also define a custom ggplot2 theme for both the data visualizations below. 
 ```{r,cache=TRUE,message=FALSE}
 # Loading libraries and user defined functions
 library(tidyverse);library(magrittr); library(extrafont); library(extrafontdb)
