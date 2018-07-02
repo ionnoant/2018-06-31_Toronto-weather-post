@@ -187,17 +187,17 @@ body {
 <div id="summary" class="section level2">
 <h2>Summary</h2>
 <p>It is hot in Toronto right now. Like 45 degrees Celsius hot.</p>
-<p>So, I thought I would do a short post that looks at daily weather patterns in Toronto. Both the graphs below show that since 2013 we are seeing a higher frequency of daily average temperature above zero degrees Celsius than below.</p>
+<p>So, I thought I would do a short post that looks at daily weather patterns in Toronto. Both the graphs below show that since 2013 we are seeing a higher frequency of daily average temperature above zero degrees Celsius than below in Toronto.</p>
 </div>
 <div id="analysis" class="section level2">
 <h2>Analysis</h2>
 <div id="data" class="section level3">
 <h3>Data</h3>
-<p>The raw data used in this analysis is available on the <a href="http://climate.weather.gc.ca/climate_data/daily_data_e.html?StationID=51459">Environment Canada website</a>. The preprocessed version of this data is available on my <a href="https://github.com/ionnoant/2018-06-31_Toronto-weather-post">github page</a>.</p>
+<p>The raw data used in this analysis is available on the <a href="http://climate.weather.gc.ca/climate_data/daily_data_e.html?StationID=51459">Environment Canada website</a>. The processed version of this data is available on my <a href="https://github.com/ionnoant/2018-06-31_Toronto-weather-post">github page</a>. The data spans from June 13, 2013 to June 27, 2018 and contains 1,819 records of temperature data for Toronto Pearson International Airport.</p>
 </div>
 <div id="r-libraries" class="section level3">
 <h3>R libraries</h3>
-<p>The following libraries were loaded into my R workspace for this analysis.</p>
+<p>The following libraries were loaded into my R workspace for this analysis. I also define a customer ggplot2 theme for both the data visualizations below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Loading libraries and user defined functions</span>
 <span class="kw">library</span>(tidyverse);<span class="kw">library</span>(magrittr); <span class="kw">library</span>(extrafont); <span class="kw">library</span>(extrafontdb)
 <span class="kw">library</span>(ggplot2); <span class="kw">library</span>(viridis);<span class="kw">library</span>(DT)
@@ -222,6 +222,7 @@ theme_ai &lt;-<span class="st"> </span><span class="cf">function</span>(){
 </div>
 <div id="preprocessing" class="section level3">
 <h3>Preprocessing</h3>
+<p>6 weather data files were read into the R workspace. One variable was formatted to another type, a date variable, and new variable was created to contain the daily maximum or minimum weather in a given day. Several variables were stripped from the dataset prior to being read into R.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">file_list &lt;-<span class="st"> </span><span class="kw">list.files</span>()
 file_list &lt;-<span class="st"> </span>file_list[<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">7</span><span class="op">:</span><span class="dv">11</span>)]
 df_name_list &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;w_2018&quot;</span>, <span class="st">&quot;w_2013&quot;</span>, <span class="st">&quot;w_2014&quot;</span>, <span class="st">&quot;w_2015&quot;</span>, <span class="st">&quot;w_2016&quot;</span>, 
@@ -249,6 +250,7 @@ w_all &lt;-<span class="st"> </span>w_all <span class="op">%&gt;%</span>
 </div>
 <div id="results" class="section level3">
 <h3>Results</h3>
+<p>The data visualizations below contain either daily average or maximum temperature for a given day from June 13, 2013 to June 27, 2018. The grey lines for both data visualizations represent smoothed local average means and show that, on average, daily average and maximum temperature is increasing over time. The data table below contains all the information used for this analysis.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Daily Average Temp.</span>
 w_all <span class="op">%&gt;%</span>
 <span class="kw">ggplot</span>()<span class="op">+</span>
